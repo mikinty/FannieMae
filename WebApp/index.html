@@ -17,7 +17,7 @@
   <body ng-app = 'portfolioApp' ng-controller="mainController as main">
       <section ng-controller = 'tabController as navigation'>
         <h1>{{main.content.name}}
-        <select id = "houseSelect" class="selectpicker" ng-model = "main.item" ng-change="main.updateJson()">
+        <select id = "houseSelect" class="selectpicker" ng-model = "main.item" ng-change="main.updateJson(h)">
             {{main.houses.id}}
             <option ng-repeat="h in main.houses.id" value="{{h}}">{{h}}</option>
         </select>
@@ -79,7 +79,7 @@
        </div>
       </section>
   </body>
-  <script>
+  <!--<script>
     // Initialize Firebase
         var config = {
             apiKey: "AIzaSyAYOjZx7LghW8XL6nSVeEtO3M66eHdwIQY",
@@ -117,6 +117,6 @@
                 }
             );
         });
-    </script>
+    </script> -->
 
 </html>
