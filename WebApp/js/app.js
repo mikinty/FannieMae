@@ -25,6 +25,7 @@
 		$http.get('houses.json').then(function(res){
 			this.houses = res.data;
 		}.bind(this)); //need to bind to refer to this object
+		console.log(this.houses);
 		this.houseJson = null;
 		$http.get('0001.json').then(function(res){
 			this.houseJson = res.data;
@@ -40,6 +41,35 @@
         };
         firebase.initializeApp(config);
 
+		function changeMainImg(i){
+			//test image
+			var storageRefI = firebase.storage().ref(i+'/img/');
+			var tempI = storageRefI.child("house.jpg");
+
+			tempI.getDownloadURL().then(function(url) {
+				console.log(url);
+				$("#mainImg").attr("src", url);
+				}).catch(function(error) {
+				switch (error.code) {
+					case 'storage/object_not_found':
+					// File doesn't exist
+					break;
+
+					case 'storage/unauthorized':
+					// User doesn't have permission to access the object
+					break;
+
+					case 'storage/canceled':
+					// User canceled the upload
+					break;
+
+					case 'storage/unknown':
+					// Unknown error occurred, inspect the server response
+					break;
+				}
+			});		
+			}
+
 		//test image
 		var storageRefI = firebase.storage().ref('0001/img/');
 		var tempI = storageRefI.child("house.jpg");
@@ -47,6 +77,32 @@
 		tempI.getDownloadURL().then(function(url) {
 			console.log(url);
 			  $("#mainImg").attr("src", url);
+			}).catch(function(error) {
+			switch (error.code) {
+				case 'storage/object_not_found':
+				// File doesn't exist
+				break;
+
+				case 'storage/unauthorized':
+				// User doesn't have permission to access the object
+				break;
+
+				case 'storage/canceled':
+				// User canceled the upload
+				break;
+
+				case 'storage/unknown':
+				// Unknown error occurred, inspect the server response
+				break;
+			}
+		});		
+		//test image
+		var storageRefI2 = firebase.storage().ref();
+		var tempI2 = storageRefI2.child("0001");
+
+		tempI2.getDownloadURL().then(function(url) {
+			console.log(url);
+			  $("#testMain").attr("src", url+".jpg");
 			}).catch(function(error) {
 			switch (error.code) {
 				case 'storage/object_not_found':
@@ -82,7 +138,7 @@
             var task = storageRef.put(file);
 
             //Update progress bar
-            task.on('state_changed', 
+            /*task.on('state_changed', 
                 function progress(snapshot){
                     var percentage = 100*snapshot.bytesTransferred / snapshot.totalBytes;
                     uploader.value = percentage;
@@ -93,7 +149,7 @@
                 function complete(){
                     alert('Upload Success!');
                 }
-            );
+            );*/
         });
 
 		this.checkStatus = function(status){
@@ -117,10 +173,12 @@
 				//var temp = null;
 			   $http.get(url).then(function(res){
 					this.houseJson = res.data;
+					console.log("hello");
+			   console.log(houseJson);
 				}.bind(this));
 			  //console.log(temp);
 			  //console.log(temp['id']);
-			   console.log(houseJson);
+			  
 			}).catch(function(error) {
 			switch (error.code) {
 				case 'storage/object_not_found':
@@ -140,6 +198,11 @@
 				break;
 			}
 			});			
+
+			//change colors
+
+			//change images
+			changeMainImg(h);
 		}
  	});
  	portfolio.controller('tabController', function(){

@@ -52,7 +52,8 @@
 			//console.log(this.houseJson);
 			*/
 
-
+//  "imgs": ["img/plumbing","img/electricity","img/lawn","img/bathrooms",
+				//"img/bedrooms","img/roof","img/AC","img/heating","img/windows"],
 
 				  //"imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn.jpg","img/bathroom.jpg",
 //				"img/bedrooms","img/roof","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
