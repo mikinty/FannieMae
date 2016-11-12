@@ -18,6 +18,7 @@
 		1E12FD8C1DD6E1CC00B7C3DB /* PropertyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E12FD8B1DD6E1CC00B7C3DB /* PropertyTableViewCell.swift */; };
 		1E12FD8E1DD6EFF500B7C3DB /* PropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E12FD8D1DD6EFF500B7C3DB /* PropertyViewController.swift */; };
 		1E12FD901DD706F400B7C3DB /* ClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E12FD8F1DD706F400B7C3DB /* ClassificationViewController.swift */; };
+		1E658C2E1DD7B0C900020E45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E658C2D1DD7B0C900020E45 /* GoogleService-Info.plist */; };
 		2D9B46521B8D0936D1351345 /* Pods_FannieMae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460244D04CD7218149BB33FA /* Pods_FannieMae.framework */; };
 		7088F376D5F84209F30CA263 /* Pods_FannieMaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591B858B761C6470D25A495C /* Pods_FannieMaeUITests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		1E12FD8B1DD6E1CC00B7C3DB /* PropertyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyTableViewCell.swift; sourceTree = "<group>"; };
 		1E12FD8D1DD6EFF500B7C3DB /* PropertyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyViewController.swift; sourceTree = "<group>"; };
 		1E12FD8F1DD706F400B7C3DB /* ClassificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationViewController.swift; sourceTree = "<group>"; };
+		1E658C2D1DD7B0C900020E45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2BBBABB942052475E3FC0421 /* Pods-FannieMaeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FannieMaeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FannieMaeUITests/Pods-FannieMaeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		460244D04CD7218149BB33FA /* Pods_FannieMae.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FannieMae.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		591B858B761C6470D25A495C /* Pods_FannieMaeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FannieMaeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				1E0E3BFF1DD6C1740049148A /* Assets.xcassets */,
 				1E0E3C011DD6C1740049148A /* LaunchScreen.storyboard */,
 				1E0E3C041DD6C1740049148A /* Info.plist */,
+				1E658C2D1DD7B0C900020E45 /* GoogleService-Info.plist */,
 			);
 			path = FannieMae;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E0E3C031DD6C1740049148A /* LaunchScreen.storyboard in Resources */,
+				1E658C2E1DD7B0C900020E45 /* GoogleService-Info.plist in Resources */,
 				1E0E3C001DD6C1740049148A /* Assets.xcassets in Resources */,
 				1E0E3BFE1DD6C1740049148A /* Main.storyboard in Resources */,
 			);

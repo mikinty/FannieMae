@@ -169,11 +169,13 @@
 			// Create a reference to the file we want to download
 			//h = this.item;
 			console.log(this.item);
-			var storageRef = firebase.storage().ref(this.item+'/');
-			var tempJson = storageRef.child(this.item+".json");
+			var i = this.houses.id.indexOf(this.item);
+			
+			//var storageRef = firebase.storage().ref(this.item+'/');
+			//var tempJson = storageRef.child(this.item+".json");
 
 			// Get the download URL
-			tempJson.getDownloadURL().then(function(url) {
+			/*tempJson.getDownloadURL().then(function(url) {
 				console.log(url);
 				//var temp = null;
 			   $http.get(url).then(function(res){
@@ -212,7 +214,7 @@
 				break;
 			}
 			});			
-
+			*/
 			//change colors
 			//changeColors(h);
 			//change images

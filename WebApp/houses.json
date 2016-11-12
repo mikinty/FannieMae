@@ -1,3 +1,45 @@
 {
-  "id": ["0001","0002","0003","0004","0005"]
+  "id": ["0001","0002","0003","0004","0005"],
+  "houses":[
+    {
+      "id": "0001",
+      "name": "Demo House",
+      "address": "New Haven, CT 06520",
+      "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
+            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+      "status": [0,1,0,0,0,1,0,1,1]     
+    },
+    {
+      "id": "0002",
+      "name": "Mansion House",
+      "address": "New Haven, CT 06520",
+      "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
+            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+      "status": [1,1,1,0,1,1,0,1,1]     
+    },
+    {
+      "id": "0003",
+      "name": "Demo House 3",
+      "address": "New Haven, CT 06520",
+      "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
+            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+      "status": [1,0,1,0,1,1,0,1,1]     
+    },
+    {
+      "id": "0004",
+      "name": "Demo House 4",
+      "address": "New Haven, CT 06520",
+      "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
+            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+      "status": [1,0,1,1,1,1,0,1,1]     
+    },
+    {
+      "id": "0005",
+      "name": "Demo House 5",
+      "address": "New Haven, CT 06520",
+      "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
+            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+      "status": [0,0,0,0,1,1,1,1,1]     
+    }
+  ]
 }
