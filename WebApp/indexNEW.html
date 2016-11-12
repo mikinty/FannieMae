@@ -12,58 +12,45 @@
   <body ng-app = 'portfolioApp' ng-controller="mainController as main">
       <section ng-controller = 'tabController as navigation'>
         <h1>{{main.content.name}} - Tab {{navigation.tab}}</h1>
-        <ul class='nav navbar-nav'>
-        <li ng-class = "{active: navigation.isSelected(1)}">
-          <a href ng-click = "navigation.selectTab(1)">Info</a>
-        </li>
-        <li ng-repeat = "t in main.content.tabs" ng-class="{active: navigation.isSelected(2)}">
-          <a href ng-click = "navigation.selectTab("+($index+2)+")">{{main.content.tabs[$index]}}</a>
-        </li>
-        <!--
-        <li ng-class = "{active: navigation.isSelected(1)}">
-          <a href ng-click = "navigation.selectTab(1)">Info</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(2)}">
-          <a href ng-click = "navigation.selectTab(2)">Plumbing</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(3)}">
-          <a href ng-click = "navigation.selectTab(3)">Electricity</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(4)}">
-          <a href ng-click = "navigation.selectTab(4)">Lawn</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(5)}">
-          <a href ng-click = "navigation.selectTab(5)">Bathrooms</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(6)}">
-          <a href ng-click = "navigation.selectTab(6)">Bedrooms</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(7)}">
-          <a href ng-click = "navigation.selectTab(7)">Roof</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(8)}">
-          <a href ng-click = "navigation.selectTab(8)">A/C</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(9)}">
-          <a href ng-click = "navigation.selectTab(9)">Heating</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(10)}">
-          <a href ng-click = "navigation.selectTab(10)">Windows</a>
-        </li>-->
-        </ul>
-      <div class='navigation container' ng-show="navigation.isSelected(1)">
+        <div class="container" style="float: left;">
+        <div class="row">
+        <div class="col-sm-3">
+            <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="visible-xs navbar-brand">Sidebar menu</span>
+                </div>
+                <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class = "{active: navigation.isSelected(1)}">
+                        <a href ng-click = "navigation.selectTab(1)">Info</a>
+                    </li>
+                    <li ng-repeat = "t in main.content.tabs track by $index" ng-class="{active: navigation.isSelected($index+2)}">
+                        <a href ng-click = "navigation.selectTab($index+2)"><span class="tab-good">{{main.content.tabs[$index]}}</span></a> 
+                    </li>
+                </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+            </div>
+        </div>
+      <div ng-show="navigation.isSelected(1)">
         <p class='col-md-8'>{{main.content.description}}</p>
         <p class='col-md-8'>{{main.content.address}}</p>
       </div>
-      <div class='navigation container' ng-show="navigation.isSelected(2)">
-        <div class='leftSec'>
+       <div ng-repeat = "p in main.content.imgs track by $index" ng-show="navigation.isSelected($index+2)">
+          <div class='leftSec'>
+              A description of stuff.
         </div>
         <div class='rightSec'>
-          <img src="img/plumb.jpg">
+          <img ng-src="{{p}}">
         </div>
-      </div>
-        
+       </div>
       </section>
-      
   </body>
 </html>

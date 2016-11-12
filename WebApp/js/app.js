@@ -7,7 +7,8 @@
 		mainImg: "img/house.jpg",
 		tabs: ["Plumbing","Electricity","Lawn","Bathrooms","Bedrooms","Roof","A/C","Heating","Windows"],
 		imgs: ["img/plumb.jpg","img/electricity.jpg","img/lawn.jpg","img/house.jpg",
-				"img/house.jpg","img/house.jpg","img/house.jpg","img/house.jpg","img/house.jpg"]
+				"img/house.jpg","img/house.jpg","img/house.jpg","img/house.jpg","img/house.jpg"],
+		status: ['1','1','1','1','1','1','1','1','1']
  	};
 
  	portfolio.controller('mainController', function(){
@@ -22,4 +23,4 @@
  			return this.tab==checkTab;
  		}
  	});
-})();
+})();//class="navigation container" 
