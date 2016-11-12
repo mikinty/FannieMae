@@ -45,3 +45,14 @@
 				});
 				console.log();
 				this.houseJson = tempJson;
+
+			/*$http.get(this.item+'.json').then(function(res){
+				this.houseJson = res.data;
+			}.bind(this)); //need to bind to refer to this object
+			//console.log(this.houseJson);
+			*/
+
+
+
+				  //"imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn.jpg","img/bathroom.jpg",
+//				"img/bedrooms","img/roof","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],

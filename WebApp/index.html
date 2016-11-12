@@ -44,11 +44,7 @@
                     </li>
                     <li ng-repeat = "t in main.content.tabs track by $index" ng-class="{active: navigation.isSelected($index+2)}">
                         <a href ng-click = "navigation.selectTab($index+2)">
-                            
-                            <span ng-class="main.checkStatus(main.content.status[$index])" id="tab$index">{{main.content.tabs[$index]}}</span>
-                            
-
-                            
+                            <span ng-class="main.checkStatus(main.houseJson.status[$index])" id="tab$index">{{main.content.tabs[$index]}}</span>
                         </a> 
                     </li>
                 </ul>
@@ -57,16 +53,16 @@
             </div>
         </div>
       <div class = 'col-div' ng-show="navigation.isSelected(1)">
-        <div class='leftSec'>
+        <div style = "vertical-align: top;" class='leftSec'>
             <p class='col-md-8'>{{main.content.description}}</p>
             <p class='col-md-8'>{{main.content.address}}</p>
         </div>
-        <div class='rightSec'>
-            <img src="img/house.jpg">
+        <div style = "vertical-align: top;" class='rightSec'>
+            <img id = 'mainImg' src="">
             <div style="margin-top: 5px;">
                 <progress style="width: 100%" value="0" max="100" id="uploader">0%</progress>
                 <input style= "margin: auto;" type="file" value="upload" id="fileButton">
-            </div>
+        </div>
         </div>
       </div>
        <div class = 'col-div' ng-repeat = "p in main.content.imgs track by $index" ng-show="navigation.isSelected($index+2)">

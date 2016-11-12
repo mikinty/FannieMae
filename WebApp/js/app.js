@@ -40,6 +40,34 @@
         };
         firebase.initializeApp(config);
 
+		//test image
+		var storageRefI = firebase.storage().ref('0001/img/');
+		var tempI = storageRefI.child("house.jpg");
+
+		tempI.getDownloadURL().then(function(url) {
+			console.log(url);
+			  $("#mainImg").attr("src", url);
+			}).catch(function(error) {
+			switch (error.code) {
+				case 'storage/object_not_found':
+				// File doesn't exist
+				break;
+
+				case 'storage/unauthorized':
+				// User doesn't have permission to access the object
+				break;
+
+				case 'storage/canceled':
+				// User canceled the upload
+				break;
+
+				case 'storage/unknown':
+				// Unknown error occurred, inspect the server response
+				break;
+			}
+		});		
+		//upload buttons
+
         //get elements
         var uploader = $("#uploader")[0];
         var fileButton = $("#fileButton")[0];
@@ -77,11 +105,6 @@
 			}
 		}
 		this.updateJson = function(){
-			/*$http.get(this.item+'.json').then(function(res){
-				this.houseJson = res.data;
-			}.bind(this)); //need to bind to refer to this object
-			//console.log(this.houseJson);
-			*/
 			// Create a reference to the file we want to download
 			h = this.item;
 			console.log(h);
@@ -90,11 +113,14 @@
 
 			// Get the download URL
 			tempJson.getDownloadURL().then(function(url) {
-			  this.temp = $http.get(url).then(function(res){
-					this.temp = res.data;
+				console.log(url);
+				//var temp = null;
+			   $http.get(url).then(function(res){
+					this.houseJson = res.data;
 				}.bind(this));
-			  console.log(temp);
-			  this.houseJson = temp;
+			  //console.log(temp);
+			  //console.log(temp['id']);
+			   console.log(houseJson);
 			}).catch(function(error) {
 			switch (error.code) {
 				case 'storage/object_not_found':
