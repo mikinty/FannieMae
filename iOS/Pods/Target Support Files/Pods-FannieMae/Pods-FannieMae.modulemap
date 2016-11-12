@@ -1,0 +1,6 @@
+framework module Pods_FannieMae {
+  umbrella header "Pods-FannieMae-umbrella.h"
+
+  export *
+  module * { export * }
+}
