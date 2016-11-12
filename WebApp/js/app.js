@@ -86,11 +86,12 @@
 			h = this.item;
 			console.log(h);
 			var storageRef = firebase.storage().ref(h+'/');
-			var tempJson = this.storageRef.child(h+".json");
+			var tempJson = storageRef.child(h+".json");
 
 			// Get the download URL
 			tempJson.getDownloadURL().then(function(url) {
-			// Insert url into an <img> tag to "download"
+			  this.houseJson = tempJson;
+			  console.log(this.houseJson);
 			}).catch(function(error) {
 			switch (error.code) {
 				case 'storage/object_not_found':
@@ -109,9 +110,7 @@
 				// Unknown error occurred, inspect the server response
 				break;
 			}
-			});
-			console.log(tempJson);
-			this.houseJson = tempJson;
+			});			
 		}
  	});
  	portfolio.controller('tabController', function(){
