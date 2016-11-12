@@ -250,7 +250,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yaq-r1-qQK">
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="HFq-61-0ex"/>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="HFq-61-0ex">
+                            <connections>
+                                <action selector="postImage:" destination="2bf-EU-E5C" id="L9K-8P-3MD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="bWS-KG-geH" id="QPf-tx-3UW"/>
