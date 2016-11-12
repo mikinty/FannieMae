@@ -18,10 +18,9 @@
       <section ng-controller = 'tabController as navigation'>
         <h1>{{main.content.name}}
         <select id = "houseSelect" class="selectpicker" ng-model = "main.item" ng-change="main.updateJson()">
-            {{main.houses.id}}
             <option ng-repeat="h in main.houses.id" value="{{h}}">{{h}}</option>
         </select>
-        House Json ID: {{main.houseJson['id']}}
+        House Json ID: <input type="text" ng-model="main.item">{{main.houseJson}}
         </h1> <!--  - Tab {{navigation.tab}}-->
         <div>
         <div class="row">
@@ -44,7 +43,7 @@
                     </li>
                     <li ng-repeat = "t in main.content.tabs track by $index" ng-class="{active: navigation.isSelected($index+2)}">
                         <a href ng-click = "navigation.selectTab($index+2)">
-                            <span ng-class="main.checkStatus(main.houseJson.status[$index])" id="tab$index">{{main.content.tabs[$index]}}</span>
+                            <span ng-class="main.checkStatus(main.houseJson.status[$index])" id="tab$index">{{main.content.tabs[$index]}}{{$index}}</span>
                         </a> 
                     </li>
                 </ul>

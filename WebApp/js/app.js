@@ -18,10 +18,11 @@
 		"name": "Demo House",
 		"address": "New Haven, CT 06520"
 	};*/
- 	portfolio.controller('mainController', function($http, $scope){
+ 	portfolio.controller('mainController', function($http, $scope, $timeout){
  		this.content = pageContent;
 		this.houses = null;
 		this.houseJson = null;
+		this.item = "0001";
 		$http.get('houses.json').then(function(res){
 			this.houses = res.data;
 		}.bind(this)); //need to bind to refer to this object
@@ -69,7 +70,11 @@
 				}
 			});		
 			}
-
+		function changeColors(h){
+			g = this.houses.status;
+			console.log("hello");
+			console.log(g);
+		}
 		//test image
 		var storageRefI = firebase.storage().ref('0001/img/');
 		var tempI = storageRefI.child("house.jpg");
@@ -98,7 +103,7 @@
 		});		
 		//test image
 		var storageRefI2 = firebase.storage().ref();
-		var tempI2 = storageRefI2.child("0001");
+		var tempI2 = storageRefI2.child("0001/test.jpeg");
 
 		tempI2.getDownloadURL().then(function(url) {
 			console.log(url);
@@ -162,10 +167,10 @@
 		}
 		this.updateJson = function(){
 			// Create a reference to the file we want to download
-			h = this.item;
-			console.log(h);
-			var storageRef = firebase.storage().ref(h+'/');
-			var tempJson = storageRef.child(h+".json");
+			//h = this.item;
+			console.log(this.item);
+			var storageRef = firebase.storage().ref(this.item+'/');
+			var tempJson = storageRef.child(this.item+".json");
 
 			// Get the download URL
 			tempJson.getDownloadURL().then(function(url) {
@@ -173,9 +178,18 @@
 				//var temp = null;
 			   $http.get(url).then(function(res){
 					this.houseJson = res.data;
-					console.log("hello");
-			   console.log(houseJson);
+					//$scope.$apply(function(){
+					//});
+					//this.content = pageContent;
+					//this.content.tabs = this.content.tabs;
+					//console.log("hello");
+					console.log(this.houseJson);
+					$timeout(function() {
+						$scope.$apply();
+					}, 500);
+					
 				}.bind(this));
+				//console.log(houseJson);
 			  //console.log(temp);
 			  //console.log(temp['id']);
 			  
@@ -200,9 +214,9 @@
 			});			
 
 			//change colors
-
+			//changeColors(h);
 			//change images
-			changeMainImg(h);
+			changeMainImg(this.item);
 		}
  	});
  	portfolio.controller('tabController', function(){
