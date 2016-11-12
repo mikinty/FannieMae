@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import FirebaseStorage
+import Firebase
 
 class ClassificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
@@ -78,6 +80,41 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func postImage(_ sender: UIBarButtonItem) {
+        
+        let storageRef = FIRStorage.storage().reference(forURL: "gs://fanniemae-efcae.appspot.com/")
+        
+        // Points to "images"
+        let imagesRef = storageRef.child("0001/test.jpeg")
+        
+        if let image = imagePicked.image {
+            
+            let data = UIImagePNGRepresentation(image) as NSData?
+            let uploadTask = imagesRef.put(data as! Data, metadata: nil) { metadata, error in
+                if (error != nil) {
+                    print("there's an error")
+                    // Uh-oh, an error occurred!
+                } else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    //let downloadURL = metadata!.downloadURL
+                    print("upload complete")
+                }
+            }
+            
+            uploadTask.observe(.progress, handler: { (snapshot) in
+//                let progress = snapshot.progress
+//                self.progressView.progress
+            })
+        }
+        
+        
+        
+        // Points to "images/space.jpg"
+        // Note that you can use variables to create child values
+       
+    
+        
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
