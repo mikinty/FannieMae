@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app = "fmApp">
+    <head>
+        <title>Fannie Mae Overview</title>
+        <script src="js/angular.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body ng-app = 'fmApp' ng-controller="mainController as main">
+        <section ng-controller = 'secController as navigation'>
+            <h1>Fannie Mae Application</h1>
+            <ul class = 'nav nav-pills'>
+                <li ng-class = "{active: navigation.isSelected(0)}">
+                    <a href ng-click = "navigation.selectSec(0)">House Info</a>
+                </li>
+                <li ng-class = "{active: navigation.isSelected(1)}">
+                    <a href ng-click = "navigation.selectSec(1)">Plumbing</a>
+                </li>
+            </ul>
+            <div class='navigation container' ng-show="navigation.isSelected(0)">
+                <p class='col-md-8'>{{main.content.info}}</p>
+                <p class='col-md-8'>{{main.content.address}}</p>
+            </div>
+            <div class='navigation container' ng-show="navigation.isSelected(1)">
+                <p class='col-md-8'>Hi</p>
+            </div>
+        </section>
+    </body>
+</html>

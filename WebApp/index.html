@@ -1,117 +1,122 @@
 <html ng-app="portfolioApp">
   <head>
   <title>FM App</title>  
+    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
 
   </head>
   <body ng-app = 'portfolioApp' ng-controller="mainController as main">
       <section ng-controller = 'tabController as navigation'>
-        <h1>{{main.content.name}} - Tab {{navigation.tab}}</h1>
-        <ul class='nav nav-pills'>
-        <li ng-class = "{active: navigation.isSelected(1)}">
-          <a href ng-click = "navigation.selectTab(1)">Info</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(2)}">
-          <a href ng-click = "navigation.selectTab(2)">Plumbing</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(3)}">
-          <a href ng-click = "navigation.selectTab(3)">Electricity</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(4)}">
-          <a href ng-click = "navigation.selectTab(4)">Lawn</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(5)}">
-          <a href ng-click = "navigation.selectTab(5)">Bathrooms</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(6)}">
-          <a href ng-click = "navigation.selectTab(6)">Bedrooms</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(7)}">
-          <a href ng-click = "navigation.selectTab(7)">Roof</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(8)}">
-          <a href ng-click = "navigation.selectTab(8)">A/C</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(9)}">
-          <a href ng-click = "navigation.selectTab(9)">Heating</a>
-        </li>
-        <li ng-class = "{active: navigation.isSelected(10)}">
-          <a href ng-click = "navigation.selectTab(10)">Windows</a>
-        </li>
-        </ul>
-      <div class='navigation container' ng-show="navigation.isSelected(1)">
-        <p class='col-md-8'>{{main.content.description}}</p>
-        <p class='col-md-8'>{{main.content.address}}</p>
-      </div>
-      <div class='navigation container' ng-show="navigation.isSelected(2)">
+        <h1>{{main.content.name}}
+        <select id = "houseSelect" class="selectpicker" ng-model = "main.item" ng-change="main.updateJson()">
+            {{main.houses.id}}
+            <option ng-repeat="h in main.houses.id" value="{{h}}">{{h}}</option>
+        </select>
+
+        </h1> <!--  - Tab {{navigation.tab}}-->
+        <div>
+        <div class="row">
+        <div class="col-left">
+            <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="visible-xs navbar-brand">Sidebar menu</span>
+                </div>
+                <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class = "{active: navigation.isSelected(1)}">
+                        <a href ng-click = "navigation.selectTab(1)">Info</a>
+                    </li>
+                    <li ng-repeat = "t in main.content.tabs track by $index" ng-class="{active: navigation.isSelected($index+2)}">
+                        <a href ng-click = "navigation.selectTab($index+2)">
+                            
+                            <span ng-class="main.checkStatus(main.content.status[$index])" id="tab$index">{{main.content.tabs[$index]}}</span>
+                            
+
+                            
+                        </a> 
+                    </li>
+                </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+            </div>
+        </div>
+      <div class = 'col-div' ng-show="navigation.isSelected(1)">
         <div class='leftSec'>
+            <p class='col-md-8'>{{main.content.description}}</p>
+            <p class='col-md-8'>{{main.content.address}}</p>
         </div>
         <div class='rightSec'>
-          <img src="img/plumb.jpg">
+            <img src="img/house.jpg">
+            <div style="margin-top: 5px;">
+                <progress style="width: 100%" value="0" max="100" id="uploader">0%</progress>
+                <input style= "margin: auto;" type="file" value="upload" id="fileButton">
+            </div>
         </div>
       </div>
-      <div class='navigation container' ng-show="navigation.isSelected(3)">
-        <div class='leftSec'>
+       <div class = 'col-div' ng-repeat = "p in main.content.imgs track by $index" ng-show="navigation.isSelected($index+2)">
+          <div class='leftSec'>
+              A description of stuff.
         </div>
         <div class='rightSec'>
-          <img src="img/electricity.jpg">
+          <img ng-src="{{p}}">
         </div>
-      </div>
-      <div class='navigation container' ng-show="navigation.isSelected(4)">
-        <div class='leftSec'>
-        </div>
-        <div class='rightSec'>
-          <img src="img/lawn.jpg">
-        </div>
-      </div>
-      <div class='navigation container' ng-show="navigation.isSelected(5)">
-        <div class='leftSec'>
-        </div>
-        <div class='rightSec'>
-          <img src="img/lawn.jpg">
-        </div>
-      </div>
-      <div class='navigation container' ng-show="navigation.isSelected(6)">
-        <div class='leftSec'>
-        </div>
-        <div class='rightSec'>
-          <img src="img/lawn.jpg">
-        </div>
-      </div>
-      <div class='navigation container' ng-show="navigation.isSelected(7)">
-        <div class='leftSec'>
-        </div>
-        <div class='rightSec'>
-          <img src="img/lawn.jpg">
-        </div>
-      </div>
-      <div class='navigation container' ng-show="navigation.isSelected(8)">
-        <div class='leftSec'>
-        </div>
-        <div class='rightSec'>
-          <img src="img/lawn.jpg">
-        </div>
-      </div>
-      <div class='navigation container' ng-show="navigation.isSelected(9)">
-        <div class='leftSec'>
-        </div>
-        <div class='rightSec'>
-          <img src="img/lawn.jpg">
-        </div>
-      </div>
-      <div class='navigation container' ng-show="navigation.isSelected(10)">
-        <div class='leftSec'>
-        </div>
-        <div class='rightSec'>
-          <img src="img/lawn.jpg">
-        </div>
-      </div>      
+       </div>
       </section>
-      
   </body>
+  <script>
+    // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAYOjZx7LghW8XL6nSVeEtO3M66eHdwIQY",
+            authDomain: "fanniemae-efcae.firebaseapp.com",
+            databaseURL: "https://fanniemae-efcae.firebaseio.com",
+            storageBucket: "fanniemae-efcae.appspot.com",
+            messagingSenderId: "794391373641"
+        };
+        firebase.initializeApp(config);
+
+        //get elements
+        var uploader = $("#uploader")[0];
+        var fileButton = $("#fileButton")[0];
+
+        //Listen for Files
+        fileButton.addEventListener("change", function(e){
+            //get file
+            var file = e.target.files[0];
+            //create storage reference to upload
+            var storageRef = firebase.storage().ref('img/'+file.name);
+            //upload file
+            var task = storageRef.put(file);
+
+            //Update progress bar
+            task.on('state_changed', 
+                function progress(snapshot){
+                    var percentage = 100*snapshot.bytesTransferred / snapshot.totalBytes;
+                    uploader.value = percentage;
+                },
+                function error(err){
+
+                },
+                function complete(){
+                    alert('Upload Success!');
+                }
+            );
+        });
+    </script>
+
 </html>

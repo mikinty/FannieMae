@@ -21,13 +21,13 @@ p {
 }
 .leftSec{
     float: left;
-    width: 45%;
-    margin: auto;
+    width: 50%;
+    padding: 5px;
 }
 .rightSec{
     float: right;
-    width: 45%;
-    margin: auto;
+    margin-left: 50%;
+    padding: 5px;
 }
 img{
     max-width: 100%;
@@ -38,18 +38,39 @@ img{
     max-height: none;
   }
   .sidebar-nav .navbar ul {
-    float: left;
+    float: none;
+    color: #000000;
     display: block;
   }
   .sidebar-nav .navbar li {
     float: none;
+    color: #000000;
     display: block;
   }
   .sidebar-nav .navbar li a {
+    color: #000000;
     padding-top: 12px;
     padding-bottom: 12px;
   }
 }
 .tab-good{
-    background: #34FF3D;
+    background: #29E83C;
+    opacity: 50%;
+}
+.tab-bad{
+    background: #FF392C;
+    opacity: 50%;
+}
+#uploader{
+    -webkit-appearance: none;
+    width: 50%;
+    margin-bottom: 10px;
+}
+.col-left{
+    width: 20%;
+    float: left;
+}
+.col-div{
+    width: 80%;
+    float: right;
 }

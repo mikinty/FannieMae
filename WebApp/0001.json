@@ -1,0 +1,7 @@
+{
+  "id": "0001",
+  "name": "Demo House",
+  "address": "New Haven, CT 06520",
+  "imgs": ["img/plumbing","img/electricity","img/lawn","img/bathrooms",
+				"img/bedrooms","img/roof","img/AC","img/heating","img/windows"]
+}
