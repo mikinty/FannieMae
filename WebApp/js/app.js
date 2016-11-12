@@ -90,8 +90,11 @@
 
 			// Get the download URL
 			tempJson.getDownloadURL().then(function(url) {
-			  this.houseJson = tempJson;
-			  console.log(this.houseJson);
+			  this.temp = $http.get(url).then(function(res){
+					this.temp = res.data;
+				}.bind(this));
+			  console.log(temp);
+			  this.houseJson = temp;
 			}).catch(function(error) {
 			switch (error.code) {
 				case 'storage/object_not_found':
