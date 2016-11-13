@@ -15,12 +15,25 @@
 		this.houses = null;
 		this.item = "0001";
 		this.currHouse = null;
+
+		// Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAYOjZx7LghW8XL6nSVeEtO3M66eHdwIQY",
+            authDomain: "fanniemae-efcae.firebaseapp.com",
+            databaseURL: "https://fanniemae-efcae.firebaseio.com",
+            storageBucket: "fanniemae-efcae.appspot.com",
+            messagingSenderId: "794391373641"
+        };
+        firebase.initializeApp(config);
+
 		$http.get('houses.json').then(function(res){
 			this.houses = res.data;
 			this.currHouse = this.houses.housesContainer[0];
+			updateImages("0001", this.currHouse);
+			//updates the main image
 			var storageRefI = firebase.storage().ref(this.currHouse['id']+'/img/');
 			var tempI = storageRefI.child("house.jpg");
-
+			
 			tempI.getDownloadURL().then(function(url) {
 				console.log(url);
 				$("#mainImg").attr("src", url);
@@ -45,15 +58,7 @@
 			});		
 		}.bind(this)); //need to bind to refer to this object
 		
-		// Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAYOjZx7LghW8XL6nSVeEtO3M66eHdwIQY",
-            authDomain: "fanniemae-efcae.firebaseapp.com",
-            databaseURL: "https://fanniemae-efcae.firebaseio.com",
-            storageBucket: "fanniemae-efcae.appspot.com",
-            messagingSenderId: "794391373641"
-        };
-        firebase.initializeApp(config);
+		
 
 		function changeMainImg(i){
 			var storageRefI = firebase.storage().ref(i+'/img/');
