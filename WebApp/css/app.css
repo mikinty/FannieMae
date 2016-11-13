@@ -61,6 +61,10 @@ img{
     background: #FF392C;
     opacity: 50%;
 }
+.tab-med{
+    background: #FFF125;
+    opacity: 50%;
+}
 #uploader{
     -webkit-appearance: none;
     width: 50%;

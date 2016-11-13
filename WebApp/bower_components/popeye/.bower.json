@@ -1,0 +1,14 @@
+{
+  "name": "popeye",
+  "homepage": "https://github.com/pi3r/jQuery.popeye",
+  "_release": "a41424ef22",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a41424ef228034fad9f66d80cf4c20a1fac5f381"
+  },
+  "_source": "https://github.com/pi3r/jQuery.popeye.git",
+  "_target": "*",
+  "_originalSource": "popeye",
+  "_direct": true
+}
