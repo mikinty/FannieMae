@@ -163,8 +163,9 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
 
         }
         
+        //yeah so this didn't end up working...
         
-        let fileRef = storageRef.child("000" + String(index+1) + "/000" + String(index+1) + ".json")
+        /*let fileRef = storageRef.child("000" + String(index+1) + "/000" + String(index+1) + ".json")
         print("000" + String(index+1) + "/000" + String(index+1) + ".json")
         //var data
         fileRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) -> Void in
@@ -194,7 +195,7 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
                 }
                 catch{print("D:")}
             }
-        }
+        }*/
         /*let file = "rivers.text" //this is the file. we will write to and read from it
         
         let text = "some text" //just a text
