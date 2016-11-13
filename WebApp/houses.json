@@ -6,7 +6,7 @@
       "name": "Demo House",
       "address": "New Haven, CT 06520",
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
-            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+            "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "status": [0,1,0,0,0,1,0,1,1]     
     },
     {
@@ -14,7 +14,7 @@
       "name": "Mansion House",
       "address": "New Haven, CT 06520",
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
-            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+            "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "status": [1,1,1,0,1,1,0,1,1]     
     },
     {
@@ -22,7 +22,7 @@
       "name": "Demo House 3",
       "address": "New Haven, CT 06520",
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
-            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+            "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "status": [1,0,1,0,1,1,0,1,1]     
     },
     {
@@ -30,7 +30,7 @@
       "name": "Demo House 4",
       "address": "New Haven, CT 06520",
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
-            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+            "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "status": [1,0,1,1,1,1,0,1,1]     
     },
     {
@@ -38,7 +38,7 @@
       "name": "Demo House 5",
       "address": "New Haven, CT 06520",
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
-            "img/bedrooms/bedroom.jpg","img/roof/roof,jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
+            "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "status": [0,0,0,0,1,1,1,1,1]     
     }
   ]

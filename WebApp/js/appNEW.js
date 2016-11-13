@@ -82,10 +82,37 @@
 				}
 			});		
 			}
-		function changeColors(h){
-			g = this.houses.status;
-			console.log("hello");
-			console.log(g);
+		function helper(x, tempI){
+			tempI.getDownloadURL().then(function(url) {
+					console.log(url);
+					$("#pic_"+x).attr("src", url);
+					console.log("Changing pic_"+x);
+					}).catch(function(error) {
+					switch (error.code) {
+						case 'storage/object_not_found':
+						// File doesn't exist
+						break;
+
+						case 'storage/unauthorized':
+						// User doesn't have permission to access the object
+						break;
+
+						case 'storage/canceled':
+						// User canceled the upload
+						break;
+
+						case 'storage/unknown':
+						// Unknown error occurred, inspect the server response
+						break;
+					}
+				});
+		}
+		function updateImages(h, n){
+			var storageRefI = firebase.storage().ref(h);
+			for(x=0; x<n['imgs'].length; x++){			
+				var tempI = storageRefI.child(n['imgs'][x]);
+				helper(x, tempI);
+			}
 		}
 		
 		//test image from PHONE
@@ -158,7 +185,8 @@
 			console.log(this.item);
 			var i = this.houses.id.indexOf(this.item);
 			this.currHouse = this.houses['housesContainer'][i];
-			changeMainImg(this.item);			
+			changeMainImg(this.item);		
+			updateImages(this.item, this.currHouse);	
 		}
  	});
  	portfolio.controller('tabController', function(){

@@ -42,7 +42,7 @@
                     </li>
                     <li ng-repeat = "t in main.content.tabs track by $index" ng-class="{active: navigation.isSelected($index+2)}">
                         <a href ng-click = "navigation.selectTab($index+2)">
-                            <span ng-class="main.checkStatus(main.currHouse.status[$index])" id="tab$index">{{main.content.tabs[$index]}}</span>
+                            <span ng-class="main.checkStatus(main.currHouse.status[$index])" id="tab_{{$index}}">{{main.content.tabs[$index]}}</span>
                         </a> 
                     </li>
                 </ul>
@@ -69,7 +69,7 @@
               A description of stuff.
         </div>
         <div class='rightSec'>
-          <img ng-src="{{p}}">
+          <img id = "pic_{{$index}}" src="{{p}}">
         </div>
        </div>
       </section>
