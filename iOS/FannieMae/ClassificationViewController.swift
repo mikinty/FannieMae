@@ -16,16 +16,32 @@ import SwiftyJSON
 
 class ClassificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     //@available(iOS 2.0, *)
+    
+    var object = Property()
+    var url = ""
+    var index = 0
+    let paths = ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
+                 "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"]
+    
     @IBOutlet var postImageView: UIVisualEffectView!
     @IBOutlet var descriptionTextField: UITextField!
     @IBOutlet var imagePicked: UIImageView!
     
+    @IBOutlet var imageDisplay: UIImageView!
+    @IBOutlet var label: UILabel!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var postbutton: UIBarButtonItem!
+    @IBOutlet var indicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         descriptionTextField.delegate = self
         postImageView.isHidden = true
         
-        // Do any additional setup after loading the view, typically from a nib.
+        displayImage()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,8 +59,34 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
         return true;
     }
     
+    func displayImage() {
+        print(url)
+        if(url == "") {
+            
+        } else {
+            indicator.startAnimating()
+            label.text = ""
+            let Url = "\(object.id)/\(url)"
+            let storageRef = FIRStorage.storage().reference(forURL: "gs://fanniemae-efcae.appspot.com/\(Url)")
+            
+            storageRef.downloadURL { (URL, error) -> Void in
+                
+                if (error != nil) {
+                    print(error!)
+                    self.indicator.stopAnimating()
+                    
+                } else {
+                    if let data = NSData(contentsOf: URL!) {
+                        let image = UIImage(data: data as Data)
+                        self.imageDisplay.image = image
+                    }
+                    self.indicator.stopAnimating()
+                }
+            }
+        }
+    }
+    
   
-
     
  
     var imagePicker: UIImagePickerController?
@@ -86,22 +128,31 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
         print("lalalalalalalal")
         let rootRef = FIRDatabase.database().reference(withPath: "0001")
         print(rootRef)
+        
+        let url = paths[index]
         let storageRef = FIRStorage.storage().reference(forURL: "gs://fanniemae-efcae.appspot.com/")
         
         // Points to "images"
-        let imagesRef = storageRef.child("0001/test.jpeg")
+        let imagesRef = storageRef.child("\(object.id)/\(url)")
         
         if let image = imagePicked.image {
-            
+            activityIndicator.startAnimating()
+            postbutton.isEnabled = false
             let data = UIImagePNGRepresentation(image) as NSData?
             let uploadTask = imagesRef.put(data as! Data, metadata: nil) { metadata, error in
                 if (error != nil) {
                     print("there's an error")
                     // Uh-oh, an error occurred!
+                    self.activityIndicator.stopAnimating()
+                    self.postbutton.isEnabled = true
+                    
                 } else {
                     // Metadata contains file metadata such as size, content-type, and download URL.
                     //let downloadURL = metadata!.downloadURL
                     print("upload complete")
+                    self.activityIndicator.stopAnimating()
+                    self.postbutton.isEnabled = true
+                    self.postImageView.isHidden = true
                 }
             }
             
@@ -109,6 +160,7 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
                 //let progress = snapshot.progress
                 //self.progressView.progress
             })
+
         }
         
         let file = "file.txt" //this is the file. we will write to and read from it
@@ -173,11 +225,18 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.performSegue(withIdentifier: "show", sender: self)
         
     }
+   
+    
+    
+    
+    
     
     var kbHeight: CGFloat!
     

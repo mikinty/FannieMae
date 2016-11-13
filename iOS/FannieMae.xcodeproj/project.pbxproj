@@ -59,6 +59,7 @@
 		1E12FD8D1DD6EFF500B7C3DB /* PropertyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyViewController.swift; sourceTree = "<group>"; };
 		1E12FD8F1DD706F400B7C3DB /* ClassificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationViewController.swift; sourceTree = "<group>"; };
 		1E658C2D1DD7B0C900020E45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1E658C2F1DD7EA3200020E45 /* FannieMae.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FannieMae.entitlements; sourceTree = "<group>"; };
 		2BBBABB942052475E3FC0421 /* Pods-FannieMaeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FannieMaeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FannieMaeUITests/Pods-FannieMaeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		460244D04CD7218149BB33FA /* Pods_FannieMae.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FannieMae.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		591B858B761C6470D25A495C /* Pods_FannieMaeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FannieMaeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +123,7 @@
 		1E0E3BF71DD6C1740049148A /* FannieMae */ = {
 			isa = PBXGroup;
 			children = (
+				1E658C2F1DD7EA3200020E45 /* FannieMae.entitlements */,
 				1E0E3BF81DD6C1740049148A /* AppDelegate.swift */,
 				1E0E3BFA1DD6C1740049148A /* ViewController.swift */,
 				1E0E3BFC1DD6C1740049148A /* Main.storyboard */,
@@ -256,6 +258,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = K8NR58ZQ9P;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					1E0E3C081DD6C1740049148A = {
 						CreatedOnToolsVersion = 8.0;
@@ -621,6 +628,7 @@
 			baseConfigurationReference = B5B9AD0E5AEACEB2BD1D564C /* Pods-FannieMae.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FannieMae/FannieMae.entitlements;
 				DEVELOPMENT_TEAM = K8NR58ZQ9P;
 				INFOPLIST_FILE = FannieMae/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -635,6 +643,7 @@
 			baseConfigurationReference = 6DEAF4B29BDCF7F18E24B00A /* Pods-FannieMae.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FannieMae/FannieMae.entitlements;
 				DEVELOPMENT_TEAM = K8NR58ZQ9P;
 				INFOPLIST_FILE = FannieMae/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
