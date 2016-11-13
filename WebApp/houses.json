@@ -8,7 +8,7 @@
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
             "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "houseImg": "img/house.jpg",
-      "status": [0,1,0,0,0,1,0,1,1]     
+      "status": [0,1,1,0,1,0,0,1,0]     
     },
     {
       "id": "0002",
@@ -23,8 +23,8 @@
       "id": "0003",
       "name": "YHacks 2016",
       "address": "New Haven, CT 06520",
-      "imgs": ["plumbing/plumb.jpg","electricity/electricity.jpg","lawn/lawn.jpg","bathrooms/bathroom.jpg",
-            "bedrooms/bedroom.jpg","roof/roof.jpg","AC/ac.jpg","heating/heating.jpg","windows/window.jpg"],
+      "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
+            "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "houseImg": "img/house.jpg",
       "status": [0,0,1,0,0,1,0,0,1] 
     },

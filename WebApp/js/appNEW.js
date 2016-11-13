@@ -58,8 +58,6 @@
 			});		
 		}.bind(this)); //need to bind to refer to this object
 		
-		
-
 		function changeMainImg(i){
 			var storageRefI = firebase.storage().ref(i+'/img/');
 			var tempI = storageRefI.child("house.jpg");
@@ -181,6 +179,9 @@
 			if(status==1){
 				return "tab-good";
 			}
+			else if(status==2){
+				return "tab-med";
+			}
 			else{
 				return "tab-bad";
 			}
@@ -193,6 +194,28 @@
 			changeMainImg(this.item);		
 			updateImages(this.item, this.currHouse);	
 		}
+		this.isBad = function(i){
+			if(this.currHouse.status[i-2]==0){
+				this.currHouse.status[i-2]=3;
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		this.isRepair = function(i){
+			if(this.currHouse.status[i-2]==3){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		this.submitForm = function(i){
+			//i is then tab number
+			this.currHouse.status[i-2] = 2;
+			alert("Thank you for your submission. Repair for "+this.content.tabs[i-2]+" is on the way.");
+		}
  	});
  	portfolio.controller('tabController', function(){
  		this.tab = 1;
@@ -202,5 +225,8 @@
  		this.isSelected = function(checkTab){
  			return this.tab==checkTab;
  		}
+		this.tabNum = function(){
+			return this.tab;
+		 }
  	});	
 })();

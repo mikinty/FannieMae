@@ -65,7 +65,7 @@
             </div>
         </div>
        <div class="col-md-10" style="height: 100%;">
-           <div class="row" style="height: 80%;" ng-show="navigation.isSelected(1)">
+           <div class="row" style="height: 90%;" ng-show="navigation.isSelected(1)">
                 <div class = 'leftC'>
                         <p>{{main.currHouse.name}}</p>
                         <p>{{main.currHouse.address}}</p>
@@ -79,22 +79,29 @@
                 </div>
             </div>
 
-            <div class = 'row' style="height: 80%;" ng-repeat = "p in main.content.imgs track by $index" ng-show="navigation.isSelected($index+2)">
+            <div class = 'row' style="height: 90%;" ng-repeat = "p in main.content.imgs track by $index" ng-show="navigation.isSelected($index+2)">
                 <div class='leftC'>
-                    A description of stuff.
+                    <div class ="row" style="height:60%;">
+                        A description of stuff.
+                    </div>
+                    <div class="row" style="height: 30%; text-align: center;">
+                        <div class="center-block">
+                            <button class="btn btn-primary" id="request" ng-click="main.isBad(navigation.tabNum())">Request Maintenance</button>
+                            <form ng-show="main.isRepair(navigation.tabNum())">
+                                 <div class="form-group" style="width: 80%; margin: auto; margin-top: 30px;">
+                                    <label for="exampleTextarea">Comments</label>
+                                    <textarea class="form-control" id="exampleTextarea" rows="4"></textarea>
+                                    <button type="submit" ng-click= 'main.submitForm(navigation.tabNum());' class="btn btn-success" style="margin-top:20px;">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class='rightC'>
                         <img class="img-responsive" id = "pic_{{$index}}" src="" style="text-align:center; padding: 10px;">
                 </div>
             </div>
-            <div class="row" style="height: 20%;">
-                 <div class="center-block">
-                     <button id="request" value="">Request Maintenance</button>
-                     <script>
-
-                     </script>
-                 </div>
-            </div>
+            
         </div>
        </div>
     </section>
