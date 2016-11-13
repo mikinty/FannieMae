@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 import FirebaseStorage
 import Firebase
+import FirebaseInstanceID
+import FirebaseAnalytics
+import SwiftyJSON
 
 class ClassificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-    
-    
+    //@available(iOS 2.0, *)
     @IBOutlet var postImageView: UIVisualEffectView!
     @IBOutlet var descriptionTextField: UITextField!
     @IBOutlet var imagePicked: UIImageView!
@@ -81,7 +83,9 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func postImage(_ sender: UIBarButtonItem) {
-        
+        print("lalalalalalalal")
+        let rootRef = FIRDatabase.database().reference(withPath: "0001")
+        print(rootRef)
         let storageRef = FIRStorage.storage().reference(forURL: "gs://fanniemae-efcae.appspot.com/")
         
         // Points to "images"
@@ -102,17 +106,53 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
             }
             
             uploadTask.observe(.progress, handler: { (snapshot) in
-//                let progress = snapshot.progress
-//                self.progressView.progress
+                //let progress = snapshot.progress
+                //self.progressView.progress
             })
         }
         
+        let file = "file.txt" //this is the file. we will write to and read from it
         
+        let text = "some text" //just a text
+
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            
+            let path = dir.appendingPathComponent(file)
+            
+            //writing
+            do {
+                try text.write(to: path, atomically: false, encoding: String.Encoding.utf8)
+                print("no error")
+            }
+            catch {print("error")}
+            let localFile: NSURL = path as NSURL//NSURL.fileURL(withPath: path) as NSURL
+            let riversRef = storageRef.child("images/rivers.text")
+            
+            // Upload the file to the path "images/rivers.jpg"
+            let uploadTask = riversRef.putFile(localFile as URL, metadata: nil) { metadata, error in
+                if (error != nil) {
+                    // Uh-oh, an error occurred!
+                } else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    let downloadURL = metadata!.downloadURL
+                    print("uploaded file?(!)")
+                }
+            }
+            //reading
+            do {
+                let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
+            }
+            catch {/* error handling here */}
+        }
+        //let urlPath = Bundle.main.path(forResource: "file", ofType: "txt")
+        
+        
+        
+        //let ref = FIRDatabase.database().reference(forURL: "gs://fanniemae-efcae.appspot.com")
+
         
         // Points to "images/space.jpg"
         // Note that you can use variables to create child values
-       
-    
         
     }
     
@@ -138,8 +178,6 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
         self.performSegue(withIdentifier: "show", sender: self)
         
     }
-    
-    
     
     var kbHeight: CGFloat!
     
@@ -168,13 +206,6 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
         self.animateTextField(up: false)
     }
     
-    
-    
-    
-    
-    
-    
-    
     func animateTextField(up: Bool) {
         let movement = (up ? -kbHeight : kbHeight)
         
@@ -182,10 +213,5 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
             self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement!)
         })
     }
-
-    
-    
-    
-    
     
 }
