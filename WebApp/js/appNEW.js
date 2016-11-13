@@ -10,14 +10,6 @@
 				"img/house.jpg","img/house.jpg","img/house.jpg","img/house.jpg","img/house.jpg"],
 		status: [1,1,1,0,0,1,0,1,0]
  	};
-	/*var houses = {
-		"houses": ["0001","0002","0003","0004","0005"]
-	};*/
-	/*ar houseObject = {
-		"id": "0001",
-		"name": "Demo House",
-		"address": "New Haven, CT 06520"
-	};*/
  	portfolio.controller('mainController', function($http, $scope, $timeout){
  		this.content = pageContent;
 		this.houses = null;
@@ -52,11 +44,6 @@
 				}
 			});		
 		}.bind(this)); //need to bind to refer to this object
-		//console.log(this.houses);
-		//this.houseJson = null;
-		//$http.get('0001.json').then(function(res){
-		//	this.houseJson = res.data;
-		//}.bind(this)); //need to bind to refer to this object
 		
 		// Initialize Firebase
         var config = {
@@ -143,7 +130,7 @@
             var task = storageRef.put(file);
 
             //Update progress bar
-            /*task.on('state_changed', 
+            task.on('state_changed', 
                 function progress(snapshot){
                     var percentage = 100*snapshot.bytesTransferred / snapshot.totalBytes;
                     uploader.value = percentage;
@@ -154,7 +141,7 @@
                 function complete(){
                     alert('Upload Success!');
                 }
-            );*/
+            );
         });
 
 		this.checkStatus = function(status){
@@ -171,55 +158,7 @@
 			console.log(this.item);
 			var i = this.houses.id.indexOf(this.item);
 			this.currHouse = this.houses['housesContainer'][i];
-			changeMainImg(this.item);
-			//var storageRef = firebase.storage().ref(this.item+'/');
-			//var tempJson = storageRef.child(this.item+".json");
-
-			// Get the download URL
-			/*tempJson.getDownloadURL().then(function(url) {
-				console.log(url);
-				//var temp = null;
-			   $http.get(url).then(function(res){
-					this.houseJson = res.data;
-					//$scope.$apply(function(){
-					//});
-					//this.content = pageContent;
-					//this.content.tabs = this.content.tabs;
-					//console.log("hello");
-					console.log(this.houseJson);
-					$timeout(function() {
-						$scope.$apply();
-					}, 500);
-					
-				}.bind(this));
-				//console.log(houseJson);
-			  //console.log(temp);
-			  //console.log(temp['id']);
-			  
-			}).catch(function(error) {
-			switch (error.code) {
-				case 'storage/object_not_found':
-				// File doesn't exist
-				break;
-
-				case 'storage/unauthorized':
-				// User doesn't have permission to access the object
-				break;
-
-				case 'storage/canceled':
-				// User canceled the upload
-				break;
-
-				case 'storage/unknown':
-				// Unknown error occurred, inspect the server response
-				break;
-			}
-			});			
-			*/
-			//change colors
-			//changeColors(h);
-			//change images
-			
+			changeMainImg(this.item);			
 		}
  	});
  	portfolio.controller('tabController', function(){
@@ -231,4 +170,4 @@
  			return this.tab==checkTab;
  		}
  	});	
-})();//class="navigation container" 
+})();
