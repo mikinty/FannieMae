@@ -125,9 +125,9 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func postImage(_ sender: UIBarButtonItem) {
-        print("lalalalalalalal")
+        //print("lalalalalalalal")
         let rootRef = FIRDatabase.database().reference(withPath: "0001")
-        print(rootRef)
+        //print(rootRef)
         
         let url = paths[index]
         let storageRef = FIRStorage.storage().reference(forURL: "gs://fanniemae-efcae.appspot.com/")
@@ -163,7 +163,39 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
 
         }
         
-        let file = "file.txt" //this is the file. we will write to and read from it
+        
+        let fileRef = storageRef.child("000" + String(index+1) + "/000" + String(index+1) + ".json")
+        print("000" + String(index+1) + "/000" + String(index+1) + ".json")
+        //var data
+        fileRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+            if (error != nil) {
+                print(":(")
+            } else {
+                // Data for "images/island.jpg" is returned
+                // ... let islandImage: UIImage! = UIImage(data: data!)
+                print(":)")
+                do{
+                    var j1 = try JSONSerialization.jsonObject(with: data!, options: [])
+                    //print(j)
+                    //j["descriptions"][0] = j.descriptions[0] + "trololol"
+                    var j = j1 as! [String: Array<String>]
+                    print(j["descriptions"]?[self.index])
+                    
+                    
+                    let uploadTask = fileRef.putData((j as? Data)!, metadata: nil) { metadata, error in
+                        if (error != nil) {
+                            // Uh-oh, an error occurred!
+                        } else {
+                            // Metadata contains file metadata such as size, content-type, and download URL.
+                            let downloadURL = metadata!.downloadURL
+                            print("uploaded file?(!)")
+                        }
+                    }
+                }
+                catch{print("D:")}
+            }
+        }
+        /*let file = "rivers.text" //this is the file. we will write to and read from it
         
         let text = "some text" //just a text
 
@@ -171,14 +203,32 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
             
             let path = dir.appendingPathComponent(file)
             
+            let localFile: NSURL = path as NSURL//NSURL.fileURL(withPath: path) as NSURL
+            let riversRef = storageRef.child("images/rivers.text")
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            riversRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+                if (error != nil) {
+                    print(":(")
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    // ... let islandImage: UIImage! = UIImage(data: data!)
+                    print(":)")
+                }
+            }
+            //reading
+            do {
+                let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
+                print(text2)
+            }
+            catch {print("error before that other error")}
             //writing
             do {
                 try text.write(to: path, atomically: false, encoding: String.Encoding.utf8)
                 print("no error")
             }
             catch {print("error")}
-            let localFile: NSURL = path as NSURL//NSURL.fileURL(withPath: path) as NSURL
-            let riversRef = storageRef.child("images/rivers.text")
+            //let localFile: NSURL = path as NSURL//NSURL.fileURL(withPath: path) as NSURL
+            //let riversRef = storageRef.child("images/rivers.text")
             
             // Upload the file to the path "images/rivers.jpg"
             let uploadTask = riversRef.putFile(localFile as URL, metadata: nil) { metadata, error in
@@ -190,18 +240,14 @@ class ClassificationViewController: UIViewController, UITableViewDelegate, UITab
                     print("uploaded file?(!)")
                 }
             }
-            //reading
-            do {
-                let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
-            }
-            catch {/* error handling here */}
+            
         }
         //let urlPath = Bundle.main.path(forResource: "file", ofType: "txt")
         
         
         
         //let ref = FIRDatabase.database().reference(forURL: "gs://fanniemae-efcae.appspot.com")
-
+*/
         
         // Points to "images/space.jpg"
         // Note that you can use variables to create child values
