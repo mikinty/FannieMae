@@ -8,7 +8,16 @@
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
             "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "houseImg": "img/house.jpg",
-      "status": [0,1,1,0,1,0,0,1,0]     
+      "status": [0,1,1,0,1,0,0,1,0],
+       "descriptions":["The plumbing is leaking. There needs to be some sort of repair to fix the seals between pipe connections.",
+    "All connections are working and wires are organized neatly.",
+    "Lawn is well kept and green.",
+    "Bathroom has many leaks in the toilet and the shower. Needs a new plumbing system and replacement of the shower dial.",
+    "Bedroom is clean and well ventilated.",
+    "Roof has severe damage on the south side. Needs shingle replacement for an entire section.",
+    "AC sometimes fails during hot weather. Requires a change of internal electronics.",
+    "Heating works well.",
+    "Windows do not insulate well and need new sealant to fix this issue."]     
     },
     {
       "id": "0002",
@@ -17,7 +26,16 @@
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
             "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "houseImg": "img/house.jpg",
-      "status": [1,0,1,0,1,1,0,1,1]         
+      "status": [1,0,1,0,1,1,0,1,1],
+       "descriptions":["The plumbing is leaking. There needs to be some sort of repair to fix the seals between pipe connections.",
+    "All connections are working and wires are organized neatly.",
+    "Lawn is well kept and green.",
+    "Bathroom has many leaks in the toilet and the shower. Needs a new plumbing system and replacement of the shower dial.",
+    "Bedroom is clean and well ventilated.",
+    "Roof has severe damage on the south side. Needs shingle replacement for an entire section.",
+    "AC sometimes fails during hot weather. Requires a change of internal electronics.",
+    "Heating works well.",
+    "Windows do not insulate well and need new sealant to fix this issue."]         
     },
     {
       "id": "0003",
@@ -26,7 +44,16 @@
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
             "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "houseImg": "img/house.jpg",
-      "status": [0,0,1,0,0,1,0,0,1] 
+      "status": [0,0,1,0,0,1,0,0,1] ,
+       "descriptions":["The plumbing is leaking. There needs to be some sort of repair to fix the seals between pipe connections.",
+    "All connections are working and wires are organized neatly.",
+    "Lawn is well kept and green.",
+    "Bathroom has many leaks in the toilet and the shower. Needs a new plumbing system and replacement of the shower dial.",
+    "Bedroom is clean and well ventilated.",
+    "Roof has severe damage on the south side. Needs shingle replacement for an entire section.",
+    "AC sometimes fails during hot weather. Requires a change of internal electronics.",
+    "Heating works well.",
+    "Windows do not insulate well and need new sealant to fix this issue."]
     },
     {
       "id": "0004",
@@ -35,7 +62,16 @@
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
             "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "houseImg": "img/house.jpg",
-      "status": [1,0,1,1,1,1,0,1,1]     
+      "status": [1,0,1,1,1,1,0,1,1]     ,
+       "descriptions":["The plumbing is leaking. There needs to be some sort of repair to fix the seals between pipe connections.",
+    "All connections are working and wires are organized neatly.",
+    "Lawn is well kept and green.",
+    "Bathroom has many leaks in the toilet and the shower. Needs a new plumbing system and replacement of the shower dial.",
+    "Bedroom is clean and well ventilated.",
+    "Roof has severe damage on the south side. Needs shingle replacement for an entire section.",
+    "AC sometimes fails during hot weather. Requires a change of internal electronics.",
+    "Heating works well.",
+    "Windows do not insulate well and need new sealant to fix this issue."]
     },
     {
       "id": "0005",
@@ -44,7 +80,16 @@
       "imgs": ["img/plumbing/plumb.jpg","img/electricity/electricity.jpg","img/lawn/lawn.jpg","img/bathrooms/bathroom.jpg",
             "img/bedrooms/bedroom.jpg","img/roof/roof.jpg","img/AC/ac.jpg","img/heating/heating.jpg","img/windows/window.jpg"],
       "houseImg": "img/house.jpg",
-      "status": [0,0,0,0,1,1,1,1,1]     
+      "status": [0,0,0,0,1,1,1,1,1]  ,
+       "descriptions":["The plumbing is leaking. There needs to be some sort of repair to fix the seals between pipe connections.",
+    "All connections are working and wires are organized neatly.",
+    "Lawn is well kept and green.",
+    "Bathroom has many leaks in the toilet and the shower. Needs a new plumbing system and replacement of the shower dial.",
+    "Bedroom is clean and well ventilated.",
+    "Roof has severe damage on the south side. Needs shingle replacement for an entire section.",
+    "AC sometimes fails during hot weather. Requires a change of internal electronics.",
+    "Heating works well.",
+    "Windows do not insulate well and need new sealant to fix this issue."]   
     }
   ]
 }
