@@ -12,6 +12,9 @@ import UIKit
 class PropertyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let classification: [String] = ["Plumbing", "Electricity", "Lawn", "Bathrooms", "Bedrooms", "Roof", "A/C Heating", "Windows"]
+    var selectedValue: Property!
+    var url = ""
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +27,7 @@ class PropertyViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Cancel"
-        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -42,19 +41,41 @@ class PropertyViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "classificationCell", for: indexPath)
         cell.textLabel?.text = classification[indexPath.row]
-        cell.accessoryType = .none
+        if(selectedValue.status[indexPath.row] == 1) {
+            cell.accessoryType = .none
+        } else if (selectedValue.status[indexPath.row] == 0) {
+            cell.accessoryType = .checkmark
+        } 
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.performSegue(withIdentifier: "show", sender: self)
-        
-    }
 
+        let indexPath = tableView.indexPathForSelectedRow;
+        url = selectedValue.images[indexPath!.row]
+        index = indexPath!.row
+        
+        self.performSegue(withIdentifier: "show", sender: self)
+        tableView.deselectRow(at: indexPath!, animated: true)
+
+    }
     
-   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Cancel"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        
+        if segue.identifier == "show" {
+            let destination = segue.destination as? ClassificationViewController
+            //            let cell = sender as UITableViewCell
+            //            let selectedRow = tableView.indexPathForCell(cell)!.row
+            destination!.url = url
+            destination!.object = selectedValue
+            destination!.index = index
+        }
+    }
     
     
 }
