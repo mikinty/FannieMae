@@ -121,7 +121,7 @@
 		}
 		
 		//test image from PHONE
-		var storageRefI2 = firebase.storage().ref();
+		/*var storageRefI2 = firebase.storage().ref();
 		var tempI2 = storageRefI2.child("0001/test.jpeg");
 
 		tempI2.getDownloadURL().then(function(url) {
@@ -145,7 +145,7 @@
 				// Unknown error occurred, inspect the server response
 				break;
 			}
-		});		
+		});		*/
 		//upload buttons
 
         //get elements
@@ -157,7 +157,7 @@
             //get file
             var file = e.target.files[0];
             //create storage reference to upload
-            var storageRef = firebase.storage().ref('img/'+file.name);
+            var storageRef = firebase.storage().ref('0004/img/house.jpg');
             //upload file
             var task = storageRef.put(file);
 
@@ -171,7 +171,8 @@
 
                 },
                 function complete(){
-                    alert('Upload Success!');
+                    changeMainImg("0004");
+					alert('Upload Success!');
                 }
             );
         });
@@ -186,7 +187,6 @@
 		}
 		this.updateJson = function(){
 			// Create a reference to the file we want to download
-			//h = this.item;
 			console.log(this.item);
 			var i = this.houses.id.indexOf(this.item);
 			this.currHouse = this.houses['housesContainer'][i];

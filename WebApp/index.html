@@ -4,26 +4,40 @@
     <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/bootstrap.min.js"></script>-->
     <script src="js/appNEW.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    -->
+    <!-- Latest compiled and minified JavaScript -->
+    
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
     <link rel="stylesheet" href="css/app.css">
 
   </head>
   <body ng-app = 'portfolioApp' ng-controller="mainController as main">
       <section ng-controller = 'tabController as navigation'>
-        <h1>{{main.content.name}}
-        <select id = "houseSelect" class="selectpicker" ng-model = "main.item" ng-change="main.updateJson()">
-            <option ng-repeat="h in main.houses['id']" value="{{h}}">{{h}}</option>
-        </select>
-        </h1> <!--  - Tab {{navigation.tab}}-->
-        <div>
-        <div class="row">
-        <div class="col-left">
+        <div class="row" style="height: 15%;">
+            <div class="col-md-12">
+                <h1>{{main.content.name}}
+                <select id = "houseSelect" class="form-control" style="max-width: 200px; display:inline-block; float:top;"ng-model = "main.item" ng-change="main.updateJson()"> <!--  - Tab {{navigation.tab}}-->
+                    <option ng-repeat="h in main.houses['id']" value="{{h}}">{{h}}</option>
+                </select>
+                </h1> 
+            </div>
+        </div>
+
+        <div class="row" style="height: 85%; width: 90%; text-align: center;">
+        <div class="col-md-2" style="height:100;">
             <div class="sidebar-nav">
             <div class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
@@ -50,29 +64,40 @@
             </div>
             </div>
         </div>
-      <div class = 'col-div' ng-show="navigation.isSelected(1)">
-        <div style = "vertical-align: top;" class='leftSec'>
-            <p class='col-md-8'>{{main.houseJson.name}}</p>
-            <p class='col-md-8'>{{main.houseJson.address}}</p>
-        </div>
-        <div style = "vertical-align: top;" class='rightSec'>
-            <img id = 'mainImg' src="">
-            <img id= 'testMain' src="">
-            <div style="margin-top: 5px;">
-                <progress style="width: 100%" value="0" max="100" id="uploader">0%</progress>
-                <input style= "margin: auto;" type="file" value="upload" id="fileButton">
-        </div>
-        </div>
-      </div>
-       <div class = 'col-div' ng-repeat = "p in main.content.imgs track by $index" ng-show="navigation.isSelected($index+2)">
-          <div class='leftSec'>
-              A description of stuff.
-        </div>
-        <div class='rightSec'>
-          <img id = "pic_{{$index}}" src="{{p}}">
+       <div class="col-md-10" style="height: 100%;">
+           <div class="row" style="height: 80%;" ng-show="navigation.isSelected(1)">
+                <div class = 'leftC'>
+                        <p>{{main.currHouse.name}}</p>
+                        <p>{{main.currHouse.address}}</p>
+                </div>
+                <div class="rightC">
+                    <img class="img-responsive" id = 'mainImg' src="" style="text-align: center;">
+                    <div style="margin-top: 5px;"> <!--The upload button-->
+                        <progress style="width: 100%" value="0" max="100" id="uploader">0%</progress>
+                        <input style= "margin: auto;" type="file" value="upload" id="fileButton">
+                    </div>
+                </div>
+            </div>
+
+            <div class = 'row' style="height: 80%;" ng-repeat = "p in main.content.imgs track by $index" ng-show="navigation.isSelected($index+2)">
+                <div class='leftC'>
+                    A description of stuff.
+                </div>
+                <div class='rightC'>
+                        <img class="img-responsive" id = "pic_{{$index}}" src="" style="text-align:center; padding: 10px;">
+                </div>
+            </div>
+            <div class="row" style="height: 20%;">
+                 <div class="center-block">
+                     <button id="request" value="">Request Maintenance</button>
+                     <script>
+
+                     </script>
+                 </div>
+            </div>
         </div>
        </div>
-      </section>
+    </section>
   </body>
   <!--<script>
     // Initialize Firebase

@@ -32,7 +32,7 @@ p {
 img{
     max-width: 100%;
 }
-@media (min-width: 768px) {
+@media () {
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -73,4 +73,14 @@ img{
 .col-div{
     width: 80%;
     float: right;
+}
+.leftC{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+.rightC{
+    margin-left: 50%;
+    width: 50%;
+    height: 100%;
 }
